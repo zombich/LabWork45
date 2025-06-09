@@ -23,6 +23,32 @@ namespace MSSQL
                 return builder.ConnectionString;
             }
         }
+        public static List<Game> Games
+        {
+            get
+            {
+                using SqlConnection connection = new(ConnectionString);
+                connection.Open();
+
+                string query = "SELECT * FROM GAME";
+                SqlCommand command = new(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+                List<Game> games = new();
+                Game game;
+
+                if (reader.HasRows)
+                    while (reader.Read())
+                    {
+                        game = new();
+                        game.Id = Convert.ToInt32(reader["Id"]);
+                        game.Title = reader["Title"].ToString();
+                        game.Price = Convert.ToDouble(reader["Price"]);
+                        games.Add(game);
+                    }
+                return games;
+            }
+        }
         public static object GetScalarValue(string query)
         {
             using SqlConnection connection = new(ConnectionString);

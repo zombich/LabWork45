@@ -23,5 +23,10 @@ namespace LabWork45
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            SQLiteListView.ItemsSource = SQLite.DataAccessLayer.Games;
+        }
     }
 }

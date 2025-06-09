@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
+using System.Data;
 
 namespace SQLite
 {
@@ -14,6 +15,32 @@ namespace SQLite
                     DataSource = FileName
                 };
                 return builder.ConnectionString;
+            }
+        }
+        public static List<Game> Games
+        {
+            get
+            {
+                using SqliteConnection connection = new(ConnectionString);
+                connection.Open();
+
+                string query = "SELECT * FROM GAME";
+                SqliteCommand command = new(query, connection);
+                SqliteDataReader reader = command.ExecuteReader();
+
+                List<Game> games = new();
+                Game game;
+
+                if (reader.HasRows)
+                while (reader.Read())
+                {
+                    game = new();
+                    game.Id = Convert.ToInt32(reader["Id"]);
+                    game.Title = reader["Title"].ToString();
+                    game.Price = Convert.ToDouble(reader["Price"]);
+                    games.Add(game);
+                }
+                return games;
             }
         }
         public static object GetScalarValue(string query)

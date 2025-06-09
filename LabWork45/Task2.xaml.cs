@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace LabWork45
 {
@@ -26,11 +14,41 @@ namespace LabWork45
 
         private void SendSQLiteCommandButton_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                object result = SQLite.DataAccessLayer.GetScalarValue(SQLiteCommandTextBox.Text);
+                if (result is null)
+                    result = "NULL";
+                MessageBox.Show(result.ToString(),"Результат",MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Некорректная команда",
+                                "Ошибка",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+            }
         }
 
         private void SendMSSQLCommandButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                object result = MSSQL.DataAccessLayer.GetScalarValue(MSSQLCommandTextBox.Text);
+                if (result is null)
+                    result = "NULL";
+                MessageBox.Show(result.ToString(),
+                                "Результат",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Некорректная команда или не удалось установить подключение",
+                                "Ошибка",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+            }
 
         }
     }

@@ -4,7 +4,7 @@ namespace SQLite
 {
     public static class DataAccessLayer
     {
-        public static string FileName { get; set; } = "mssql";
+        public static string FileName { get; set; } = "mydb.sqlite";
         public static string ConnectionString
         {
             get

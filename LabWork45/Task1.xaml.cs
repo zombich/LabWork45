@@ -15,23 +15,18 @@ using System.Windows.Shapes;
 namespace LabWork45
 {
     /// <summary>
-    /// Логика взаимодействия для Task2.xaml
+    /// Логика взаимодействия для Task1.xaml
     /// </summary>
-    public partial class Task2 : Window
+    public partial class Task1 : Window
     {
-        public Task2()
+        public Task1()
         {
             InitializeComponent();
         }
-
-        private void SendSQLiteCommandButton_Click(object sender, RoutedEventArgs e)
+        private void GenerateConnectionStringButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void SendMSSQLCommandButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            MSSQLConnectionStringTextBox.Text = MSSQL.DataAccessLayer.ConnectionString;
+            SQLiteConnectionStringTextBox.Text = SQLite.DataAccessLayer.ConnectionString;
         }
     }
 }

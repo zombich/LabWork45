@@ -22,20 +22,36 @@ namespace LabWork45
             InitializeComponent();
         }
 
-        private void GenerateConnectionStringButton_Click(object sender, RoutedEventArgs e)
+        private void Task1Button_Click(object sender, RoutedEventArgs e)
         {
-            MSSQLConnectionStringTextBox.Text = MSSQL.DataAccessLayer.ConnectionString;
-            SQLiteConnectionStringTextBox.Text = SQLite.DataAccessLayer.ConnectionString;
+            Task1 task = new();
+            Hide();
+            task.ShowDialog();
+            Show();
         }
 
-        private void SendMSSQLCommandButton_Click(object sender, RoutedEventArgs e)
+        private void Task2Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Task2 task = new();
+            Hide();
+            task.ShowDialog();
+            Show();
         }
 
-        private void SendSQLiteCommandButton_Click(object sender, RoutedEventArgs e)
+        private void Task3Button_Click(object sender, RoutedEventArgs e)
         {
+            Task3 task = new();
+            Hide();
+            task.ShowDialog();
+            Show();
+        }
 
+        private void Task4Button_Click(object sender, RoutedEventArgs e)
+        {
+            Task4 task = new();
+            Hide();
+            task.ShowDialog();
+            Show();
         }
     }
 }

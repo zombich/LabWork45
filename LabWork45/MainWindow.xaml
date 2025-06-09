@@ -6,17 +6,17 @@
         xmlns:local="clr-namespace:LabWork45"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <StackPanel>
-        <Label>MSSQL</Label>
-        <TextBox x:Name="MSSQLConnectionStringTextBox"/>
-        <Label>SQLite</Label>
-        <TextBox x:Name="SQLiteConnectionStringTextBox"/>
-        <Button Content="Сгенерировать строку" Click="GenerateConnectionStringButton_Click"/>
-
-        <StackPanel Orientation="Horizontal">
-        <Button Content="Task2"/>
-        <Button Content="Task3"/>
-        <Button Content="Task4"/>
-        </StackPanel>
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </Window.Resources>
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Button Content="Task1" Click="Task1Button_Click"/>
+        <Button Content="Task2" Click="Task2Button_Click"/>
+        <Button Content="Task3" Click="Task3Button_Click"/>
+        <Button Content="Task4" Click="Task4Button_Click"/>
     </StackPanel>
 </Window>
